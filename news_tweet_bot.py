@@ -110,11 +110,11 @@ Article Link: {article_data['link']}
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a blockchain expert creating tweets about the latest news. Your tweets should be short, insightful, and professional. DO NOT use quotation marks or emojis. Include the article link at the end of the tweet. Focus on the key points and why they matter.",
+                    "content": "You are a blockchain expert creating tweets about the latest news. Your tweets should be short, insightful, and professional. DO NOT use quotation marks or emojis. DO NOT include the article link in your tweet.",
                 },
                 {
                     "role": "user",
-                    "content": f"Create a short, engaging tweet (max 240 characters not including the link) about this blockchain news article. Focus on the most important aspect. Do not use quotation marks or emojis. Include relevant hashtags. Make it sound natural and insightful. The tweet should end with the article link.\n\n{prompt}",
+                    "content": f"Create a short, engaging tweet (max 240 characters not including the link) about this blockchain news article. Focus on the most important aspect. Do not use quotation marks or emojis. Include relevant hashtags. Make it sound natural and insightful. Never add the article link to the tweet.\n\n{prompt}",
                 },
             ],
             max_tokens=150,
@@ -128,7 +128,7 @@ Article Link: {article_data['link']}
     except Exception as e:
         print(f"Error generating tweet: {e}")
         # Fallback tweet
-        return f"Latest blockchain news: {article_data['title']} {article_data['link']} #Blockchain #Crypto"
+        return f"Latest blockchain news: {article_data['title']} #Blockchain #Crypto"
 
 
 def post_tweet(tweet_text):
